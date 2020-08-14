@@ -5,7 +5,7 @@ Kenzie assignment: List1
 """
 # Your name, plus anyone who helped you with this assignment.
 # Give credit where credit is due.
-__author__ = "???"
+__author__ = "cesaramos1452"
 
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
@@ -26,8 +26,12 @@ __author__ = "???"
 
 
 def match_ends(words):
-    # your code here
-    return
+    sum = 0
+    for x in words:
+        if len(x) >= 2 and x[0] == x[-1]:
+            sum += 1
+
+    return sum
 
 
 # B. front_x
@@ -42,9 +46,15 @@ def match_ends(words):
 
 
 def front_x(words):
-    # your code here
-    return
-
+    x_list = []
+    for x in words[:]:
+        if x[0] == 'x':
+            x_list.append(x)
+            words.remove(x)
+    x_list.sort()
+    words.sort()
+    x_list.extend(words)
+    return x_list
 
 # C. sort_last
 # Given a list of non-empty tuples, return a list sorted in
@@ -56,8 +66,19 @@ def front_x(words):
 
 
 def sort_last(tuples):
-    # your code here
-    return
+    reverse_tup = []
+    final_tup = []
+
+    for n in tuples:
+        reverse_tup.append(n[::-1])
+    y = reverse_tup.copy()
+    y = sorted(y)
+
+    for n in y:
+        final_tup.append(n[::-1])
+
+    return final_tup
+    # return sorted(tuples, key=)
 
 
 # Provided simple test() function used in main() to print

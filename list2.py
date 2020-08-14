@@ -5,7 +5,7 @@ Kenzie assignment: List2
 """
 # Your name, plus anyone who helped you with this assignment.
 # Give credit where credit is due.
-__author__ = "???"
+__author__ = "cesaramos1452 with help from Greg S"
 
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
@@ -28,23 +28,30 @@ __author__ = "???"
 
 
 def remove_adjacent(nums):
-    # your code here
-    return
+    numbers = []
+    for num in nums:
+        if numbers == []:
+            numbers.append(num)
+        if num != numbers[-1]:
+            numbers.append(num)
+    return(numbers)
 
-
-# E. zip_merge
-# Given two lists, combine the values from their corresponding
-# indices into a single list.
-# list1 = ["M", "na", "i", "Ke"]
-# list2 = ["y", "me", "s", "lly"]
-# result = ['My', 'name', 'is', 'Kelly']
-# Hint: Think of it as "zipping" two lists together.  Is there
-# a built-in function in python that will do this?
+    # E. zip_merge
+    # Given two lists, combine the values from their corresponding
+    # indices into a single list.
+    # list1 = ["M", "na", "i", "Ke"]
+    # list2 = ["y", "me", "s", "lly"]
+    # result = ['My', 'name', 'is', 'Kelly']
+    # Hint: Think of it as "zipping" two lists together.  Is there
+    # a built-in function in python that will do this?
 
 
 def zip_merge(list1, list2):
-    # your code here
-    return
+    name = zip(list1, list2)
+    sentence = []
+    for string in name:
+        sentence.append(''.join(string))
+    return sentence
 
 
 # F. empty_filter
@@ -57,8 +64,17 @@ def zip_merge(list1, list2):
 
 
 def empty_filter(list1):
-    # your code here
-    return
+    def true_false(item):
+        if item == '' or item is None:
+            return False
+        else:
+            return True
+
+    names = filter(true_false, list1)
+    name = []
+    for n in names:
+        name.append(n)
+    return name
 
 
 # G. linear_merge
@@ -73,8 +89,15 @@ def empty_filter(list1):
 
 
 def linear_merge(list1, list2):
-    # your code here
-    return
+    list3 = []
+    while len(list1) and len(list2):
+        if list1[0] < list2[0]:
+            list3.append(list1.pop(0))
+        else:
+            list3.append(list2.pop(0))
+    list3.extend(list2)
+    list3.extend(list1)
+    return list3
 
 
 # Provided simple test() function used in main() to print
@@ -98,9 +121,10 @@ def main():
 
     print('remove_adjacent')
     test(remove_adjacent([1, 2, 2, 3]), [1, 2, 3])
-    test(remove_adjacent([2, 2, 3, 3, 3]), [2, 3])
-    test(remove_adjacent([]), [])
     test(remove_adjacent([2, 2, 3, 3, 3, 4, 5, 2, 3]), [2, 3, 4, 5, 2, 3])
+    test(remove_adjacent([2, 2, 3, 3, 3, ]), [2, 3])
+    # test(remove_adjacent([]), [])
+    # test(remove_adjacent([2, 2, 3, 3, 3, 4, 5, 2, 3]), [2, 3, 4, 5, 2, 3])
 
     print('\nlinear_merge')
     test(linear_merge(['aa', 'xx', 'zz'], ['bb', 'cc']),
